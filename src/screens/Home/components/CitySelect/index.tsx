@@ -1,4 +1,5 @@
 import * as Select from '@radix-ui/react-select';
+import {SelectProps}from '@radix-ui/react-select';
 import { StyledInterface } from 'styled-components';
 import { 
     Icon,
@@ -11,20 +12,20 @@ import {
 } from './styles';
 
 
-export type citysProps =  {
+export type citysProps  =  {
     name: string, code: string
 }[] | []
 
-interface Props {
+interface Props extends SelectProps {
     citys: citysProps
 }
 
-export function CitySelect({ citys }: Props){
+export function CitySelect({ citys,...rest }: Props){
     
     return (
-        <CitySelectRoot >
+        <CitySelectRoot {...rest}>
             <CitySelectTrigger>
-                <Select.Value placeholder={citys[0]?.name} defaultValue={citys[0]?.name} title={'didj'}/>
+                <Select.Value placeholder={citys[0]?.name} defaultValue={citys[0]?.name} />
                    
                 <Icon/>
             </CitySelectTrigger>

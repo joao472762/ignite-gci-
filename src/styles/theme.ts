@@ -2,6 +2,7 @@ export const theme  =  {
     colors: {
         white: '#fff',
         red: {
+            300: '#F75F64',
             400: '#F15156', 
             500: '#E44449'
         },
@@ -10,9 +11,14 @@ export const theme  =  {
         },
         blue: {
             400: '#0D3B66'
+        },
+        gray: {
+            100: '#FBE1E2'
         }
     },
     fontSize: {
+        'xs': '0.75rem',
+        'sm': '0.875rem',
         'base': '1rem',
         'lg': '1.125rem',
         'xl': '1.25rem',

@@ -13,7 +13,7 @@ export const GlobalTheme = createGlobalStyle`
         box-shadow: 0px 0px 0px 2px ${( {theme} ) => theme.colors.white};
     }
     body{
-        background-color: ${( {theme} ) => theme.colors.red[400]};
+        background-color: ${( {theme} ) => theme.colors.white};
         
     }
     body,input,button{

@@ -1,6 +1,7 @@
 import * as Select from '@radix-ui/react-select';
+import {SelectProps} from '@radix-ui/react-select'
 import { useEffect, useState } from 'react';
-import { api } from '../../../../libs/axios';
+import { api } from '../../libs/axios';
 
 
 import { 
@@ -25,11 +26,11 @@ interface stateProps {
 }
 
 
-interface StateSelectorProps {
-    updateState: (UF: string) => void;
+interface StateSelectorProps extends SelectProps {
+    placeholder?: string
 }
 
-export function StateSelector({ updateState }: StateSelectorProps){
+export function StateSelector({ defaultValue,placeholder="SP", ...rest }: StateSelectorProps){
 
 
     const [states, setSatates] = useState<stateProps[]>([])
@@ -41,10 +42,7 @@ export function StateSelector({ updateState }: StateSelectorProps){
     }
     
     
-    function handleUpdateState(ufState: string){
-        updateState(ufState)
-    }
-    
+  
     
 
     useEffect(() => {
@@ -52,9 +50,9 @@ export function StateSelector({ updateState }: StateSelectorProps){
     }, [])
 
     return (
-        <Select.Root onValueChange={handleUpdateState}>
-            <CitySelectTrigger>
-                <Select.Value placeholder={'SP'} defaultValue={'SP'}/>
+        <Select.Root {...rest}>
+            <CitySelectTrigger >
+                <Select.Value  placeholder={placeholder} />
                     <Icon />
             </CitySelectTrigger>
 
