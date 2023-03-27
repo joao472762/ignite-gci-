@@ -14,7 +14,7 @@ import { SelectControlled } from "../../components/Form/SelectControlled";
 import { api } from "../../libs/axios";
 import DogSvg from '../../assets/dog.svg'
 import { MapFilter, Filters, PetsContainer, PetsList, MapContainer, MapFilterHeader } from './styles'
-import { PetAge, PetEnergy, PetIdependence, petSelectType, PetSize } from "../../utils/FilterFormData";
+import { PetAge, PetEnergy, PetIdependence, PetSize } from "../../utils/FilterFormData";
 
 
 export interface MapFormProps {

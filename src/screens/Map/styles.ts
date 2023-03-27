@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MapContainer = styled.div`
-    background-color:  ${({theme}) => theme.colors.white};
+    background-color:  ${({theme}) => theme.colors.gray[100]};
     width: 100%;
     max-width: 1560px;
     position: relative;

@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const PetCardContainer = styled.button`
+export const PetCardContainer = styled(Link)`
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 17.5rem;
     
+    text-decoration: none;
     border-radius: 20px;
 
     overflow: hidden;

@@ -1,4 +1,5 @@
 import { ResultType } from "@remix-run/router/dist/utils";
+import { useNavigate } from "react-router-dom";
 import DogSvg from '../../assets/dog.svg';
 import { PetCardContainer, PetIcon } from "./styles";
 
@@ -9,8 +10,10 @@ interface PetCardProps{
 }
 
 export function PetCard({id,imageUrl,name}: PetCardProps){
+    const navigate = useNavigate()
+ 
     return (
-        <PetCardContainer>
+        <PetCardContainer to={`/petProfile/${id}`} >
             <img src={imageUrl} alt="pet" />
             <PetIcon>
                 <img src={DogSvg} />

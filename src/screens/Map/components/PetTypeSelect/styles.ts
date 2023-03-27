@@ -10,9 +10,6 @@ export const PetTypeSelectTrigger = styled(Select.Trigger)`
     display: flex;
     align-items: center;
     justify-content: center;
-
-
-    
     font-weight: 600;
     height: 4rem;
     padding: 0 18px;
