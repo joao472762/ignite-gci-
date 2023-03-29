@@ -15,6 +15,13 @@ export function PetStatusIndicator({ size=5, title, indicatorsChecked=1, type='p
     const indicatorDisabled = Array.from({ length: size - indicatorsChecked   }, (_, index) => index)
     const {colors} = useTheme()
 
+    const petSizeStatus = {
+        1: 'pequeno',
+        2: 'médio',
+        3: 'grande'
+    }
+    type petSizeStatusType = 1 | 2 | 3
+
 
     if (type === 'environment'){
         return (
@@ -42,7 +49,10 @@ export function PetStatusIndicator({ size=5, title, indicatorsChecked=1, type='p
                         : <CircleIndicator key={String(disabled)} isActive={false} /> 
                     ))}
             </div>
-            <span>{title}</span>
+            <span>
+                {type === 'petEnergy' && (indicatorsChecked  < 3 ? 'pouca energia' : 'moderada a alta ')}
+                {type === 'petSize' &&  petSizeStatus[indicatorsChecked as petSizeStatusType]}
+            </span>
         </PetEnergyIndicatorContainer>
 
     )

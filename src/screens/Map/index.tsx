@@ -15,6 +15,7 @@ import { api } from "../../libs/axios";
 import DogSvg from '../../assets/dog.svg'
 import { MapFilter, Filters, PetsContainer, PetsList, MapContainer, MapFilterHeader } from './styles'
 import { PetAge, PetEnergy, PetIdependence, PetSize } from "../../utils/FilterFormData";
+import { queryClient } from "../../libs/react-query";
 
 
 export interface MapFormProps {
@@ -52,11 +53,29 @@ export function Map(){
     const currentStateUf =  queryParams.get('UF')
     
     const [stateUf, setStateUf] = useState(currentStateUf)
-    const [petList, setPetList] = useState<Pet[]>([])
     const [petTypeFilter, setPetTypeFilter] = useState<PetTypeFilter>('all')
 
    
-    
+    function savePetListInlocaStorage(peListToSave: Pet[], citySelected: string) {
+        const PetsListAndLocale= {
+            city: citySelected,
+            pets: peListToSave
+        }
+        const PetsListAndLocaleToLocalStorage = JSON.stringify(PetsListAndLocale)
+        
+        localStorage.setItem('@igniteGcc:PetsListAndLocale', PetsListAndLocaleToLocalStorage)
+    }
+
+    function getPetListInlocaStorage() {
+        const petListResponse = localStorage.getItem('@igniteGcc:PetsListAndLocale')
+        if (!petListResponse) {
+            return 
+        }
+        return JSON.parse(petListResponse) as  {
+            city: string,
+            pets: Pet[]
+        }
+    }
 
     const { control, handleSubmit,formState} = useForm<MapFormProps>({
         defaultValues: {
@@ -70,6 +89,7 @@ export function Map(){
     })
 
     const { data: citys = [] } = useQuery<citysProps>(['stateUf', stateUf], async () => {
+      
 
         const response = await api.get(`/location/citys/${stateUf}`)
 
@@ -81,27 +101,33 @@ export function Map(){
     }, {
         enabled: !!stateUf
     })
-    
-    async function fetchPets(cityToFetch: string, query?: string){
-        if (query){ 
-            const response = await api.get(`/pets/${cityToFetch}${query}`)
-            
-            return setPetList(response.data.pets)
+
+    const { data: petList=[] } = useQuery<Pet[]>(['pets', citySelected], async () => {
+        const PetListAndCity = getPetListInlocaStorage()
+
+        if (PetListAndCity?.city === citySelected && PetListAndCity) {
+            return PetListAndCity.pets
         }
 
-        const response = await api.get(`/pets/${cityToFetch}`)
-        setPetList(response.data.pets)
-    }
+        const response = await api.get<{pets: Pet[]}>(`/pets/${citySelected}`)
+        
+        return response.data.pets
+    })
+
+   
+
+    
+    
+
     
     async function handleFetchNewPets(formData: MapFormProps ){
         const {age,city,energy,independence,size} = formData
-        fetchPets(city, `?age=${age}&energy=${energy}&independence=${independence}&size=${size}` ) 
+        const queryParams = `age=${age}&energy=${energy}&independence=${independence}&size=${size}`
+        const response = await api.get<{ pets: Pet[] }>(`/pets/${city}?${queryParams}`)
+         queryClient.setQueryData(['pets', citySelected],response.data.pets,)
+        savePetListInlocaStorage(response.data.pets, city)
     }
-
-    useEffect(() => {
-        fetchPets(citySelected as string)
-    }, [])
-
+    
 
     const petListFiltredByType = petList.filter(pet => {
         if (petTypeFilter === 'all') {

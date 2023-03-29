@@ -43,7 +43,7 @@ export function Select({ dataSet ,dataSetPlaceholder, label, variant='primary',.
                         </SelectRadix.ScrollUpButton>
                         <StateSelectViewPort >
                             <SelectRadix.Group >
-                                <StateSelectLabel className="SelectLabel">Estados</StateSelectLabel>
+                                <StateSelectLabel className="SelectLabel">{label?.toUpperCase()}</StateSelectLabel>
                                 {
                                     dataSet.map((data, index) => (
                                         <StateSelectItem key={data} value={data} textValue={String(dataSetPlaceholder[index])}>

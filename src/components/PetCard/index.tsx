@@ -10,7 +10,7 @@ interface PetCardProps{
 }
 
 export function PetCard({id,imageUrl,name}: PetCardProps){
-    const navigate = useNavigate()
+    
  
     return (
         <PetCardContainer to={`/petProfile/${id}`} >
