@@ -1,9 +1,15 @@
 import {  Route, BrowserRouter, Routes  } from "react-router-dom";
+
+ import { Map } from "../screens/Map";
 import { Home } from "../screens/Home";
-import { Map } from "../screens/Map";
+import { Login } from "../screens/Login";
+import { Register } from "../screens/Register";
 import { PetProfile } from "../screens/PetProfile";
-import { AppContainer } from "../styles/app";
+import { useAuth } from "../hook/useAtuh";
+
+
 export function Router(){
+    const {org } = useAuth()
     return (
         <BrowserRouter>
           
@@ -11,8 +17,13 @@ export function Router(){
                     <Route path="/" Component={Home}/>
                     <Route path="map/:city" Component={Map}/>
                     <Route path='petProfile/:id' Component={PetProfile}/>
+                    {org.id && (
+                        <>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                        </>
 
-
+                    )}
                 </Routes>
 
             

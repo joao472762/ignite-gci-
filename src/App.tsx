@@ -6,12 +6,15 @@ import { Home } from './screens/Home'
 import { AppContainer } from './styles/app'
 import { GlobalTheme } from './styles/global'
 import { theme } from './styles/theme'
+import { AuthContextProvider } from './context/AuthContext'
 
 export function App() {
   return (
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-      <Router/>
+        <AuthContextProvider>
+          <Router/>
+        </AuthContextProvider>
       </QueryClientProvider>
 
       <GlobalTheme/>

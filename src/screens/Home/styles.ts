@@ -1,10 +1,13 @@
-import styled from "styled-components";
+import styled from "styled-components"
+
 
 export const HomeContainer = styled.div`
     min-height: 100vh;
     display: flex;
     align-items:  center;
+
     background-color: ${( {theme} ) => theme.colors.red[400]};
+    
 `
 
 export const HomeContent = styled.div`
