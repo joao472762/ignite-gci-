@@ -98,9 +98,7 @@ export const PetTextFields = styled.div`
 export const UploadPhotos = styled.div`
     width: 100%;
     margin-top: 16px;
-    input {
-        display:  none;
-    }
+
     label {
        
     }
@@ -126,7 +124,11 @@ export const UploadPhotosBox = styled.label`
         border-radius: 10px;
 
         & > span {
+            margin-top: 20px;
             display: inline-block;
+        }
+        svg {
+            font-size: 25px;
         }
 `
 

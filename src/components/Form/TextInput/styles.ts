@@ -1,12 +1,7 @@
 import styled from "styled-components";
 
 export  const InputContainer = styled.label`
-  span {
-    font-size: 16px;
-    font-weight: 600;
-    color: #0d3b66;
-    margin-bottom: 8px;
-  }
+
 `;
 
 export const InputWrapper = styled.div`

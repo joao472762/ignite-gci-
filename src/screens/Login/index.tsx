@@ -22,6 +22,7 @@ import {
   Error,
 } from './styles'
 import { TextInput } from '../../components/Form/TextInput'
+import { TextInputPassword } from '../../components/Form/TextInputPassword'
 
 
 
@@ -53,9 +54,7 @@ export function Login() {
     }
   }
 
-  function handleRegisterOrganization() {
-    // TO DO
-  }
+
 
   function handleNavigateToRegisterScreen(){
     navigate('/register')
@@ -73,28 +72,23 @@ export function Login() {
           <Form onSubmit={handleSubmit(handleLogin)}>
            
       
-              <TextInput
-                type="email"
-                id="email"
-                label='Email'
-                placeholder="Digite o seu Email"
-                error={errors.email && errors.email.message}
-                {...register('password')}
-              />
+            <TextInput
+              type="email"
+              label='Email'
+              placeholder="Digite o seu Email"
+              error={errors.email && errors.email.message}
+              {...register('email')}
+            />
            
+            <TextInputPassword
+              placeholder="Senha"
+              label='Senha'
+              error={errors.password && errors.password.message}
+              {...register('password')}
+            />
             
 
-            <label htmlFor="password">Senha</label>
-            <InputWrapper>
-              <input
-                type="password"
-                id="password"
-                placeholder="Senha"
-                {...register('password')}
-              />
-              <img onClick={() => {}} src={Eye} alt="" />
-            </InputWrapper>
-            {errors.password && <Error>{errors.password.message}</Error>}
+            
 
             <Buttons>
               <Button type="submit"  className="primary">

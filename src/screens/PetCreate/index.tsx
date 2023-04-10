@@ -20,16 +20,18 @@ import { ChangeEvent, ChangeEventHandler, useState } from 'react'
 import {CloudArrowUp} from '@phosphor-icons/react'
 import { ImagePreview } from './components/ImagePreview'
 
+import Dropzone from 'react-dropzone'
+
+import { UploadImagesButton } from './components/UploadImagesButton'
+import { UploadImages } from './components/UploadImages'
+
 
 export function PetCreate(){
     const [files,setFiles] = useState<File[]>([])
 
-    function handleUploadPhotos(event: ChangeEvent<HTMLInputElement> ){
-        const newFiles = event.target.files
-        if (newFiles){
-            const filesToUpdated = [...newFiles,...files].slice(0,6)
-            setFiles(filesToUpdated)
-        }
+    function handleUploadPhotos(newFiles: File[] ){
+        const filesToUpdated = [...newFiles,...files].slice(0,5)
+        setFiles(filesToUpdated)
     }
 
     function deleteOneFile(fileName: string){
@@ -37,7 +39,6 @@ export function PetCreate(){
         setFiles(filesWithouOneFile)
     }
 
-    console.log(files)
     return (
         <PetCreateContainer>
             <PetCreateHeader>
@@ -105,29 +106,25 @@ export function PetCreate(){
                     
 
                </PetTextFields>
-               <UploadPhotos>
-                    <input 
-                        id='images'
-                        multiple
-                        accept='images/*'
-                        type="file" 
-                        onChange={handleUploadPhotos}
-                    />
-                    <UploadPhotosBox htmlFor='images'>
-                        <CloudArrowUp/>
-                        <span>Fotos</span>  
-                    </UploadPhotosBox>
-               </UploadPhotos>
+               <section>
+                    <UploadImages onUpLoadImages={handleUploadPhotos}/>
 
-               <PhotosPeview>
-                    {files.map(file => (
-                        <ImagePreview
+                <PhotosPeview>
+                        {files.map(file => (
+                            <ImagePreview
                             name={file.name}
                             key={file.name}
                             onDelete={deleteOneFile}
-                        />
-                    ))}
-               </PhotosPeview>
+                            />
+                            ))}
+                </PhotosPeview>
+
+                <UploadImagesButton 
+                        onUpLoadImages={handleUploadPhotos}
+                        style={{marginTop:'2.5rem'}}
+                />
+
+               </section>
 
                
 

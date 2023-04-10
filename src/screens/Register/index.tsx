@@ -28,6 +28,8 @@ import {
   ContainerMap,
   MapWrapper,
 } from './styles'
+import { TextInput } from '../../components/Form/TextInput'
+import { TextInputPassword } from '../../components/Form/TextInputPassword'
 
 const { passwordErrorMessage, Regex: passwordRegex } = PasswordRegex
 
@@ -124,34 +126,21 @@ export function Register() {
         <FormWrapper>
           <h1>Cadastre sua organização</h1>
           <Form onSubmit={handleSubmit(handleRegisterOrganization)}>
-            <div>
-              <label htmlFor="name">Nome</label>
-              <InputWrapper>
-                <input
-                  id='name'
-                  placeholder='Seu nome'
-                  {...register('name')}
-                />
-              </InputWrapper>
-              { errors.name && <Error>{errors.name.message}</Error>}
+            
+              <TextInput
+                label="Nome"
+                placeholder='Seu nome'
+                {...register('name')}
+                error= {errors.name && errors.name.message}
+              />
 
-            </div>
-
-
-            <div>
-              <label htmlFor="email">Email</label>
-              <InputWrapper>
-                <input
-                  {...register('email')}
-                  type="text"
-                  name="email"
-                  id="email"
-                  placeholder="mayk@email.com"
-                />
-              </InputWrapper>
-              {errors.email && <Error>{errors.email.message}</Error>}
-
-            </div>
+            <TextInput
+              {...register('email')}
+              type="email"
+              placeholder="mayk@email.com"
+              label='Email'
+              error={errors.email && errors.email.message}
+            />
 
             <div>
               <label htmlFor="cep">Cep</label>
@@ -175,24 +164,14 @@ export function Register() {
           
               </InputWrapper>
               {errors.cep && <Error>{errors.cep.message}</Error>}
-
             </div>
 
-            <div>
-
-              <label htmlFor="address">Endereço</label>
-              <InputWrapper>  
-                <input
-
-                  type="text"
-                  id="address"
-                  placeholder="Rua do Meio, 1825"
-                  {...register('address')}
-                />  
-              </InputWrapper>
-              {errors.name && <Error>{errors.name.message}</Error>}
-
-            </div>
+            <TextInput
+              {...register('address')}
+              placeholder="Rua do Meio, 1825"
+              lable='Endereço'
+              error={errors.address && errors.address.message}
+            />
 
             {cordinates && (
               <MapWrapper>
@@ -202,9 +181,8 @@ export function Register() {
                     attribution='&copy; <a href="">OpenStreetMap</a> contributors'
                     url={`https://maps.geoapify.com/v1/tile/positron/{z}/{x}/{y}.png?&apiKey=b03a45222f3c4983b87d57a8eb5d2ae3`}
                   />
-              
+          
                 </ContainerMap>
-
               </MapWrapper>
             )}
 
@@ -226,49 +204,24 @@ export function Register() {
                   )}
 
                 />
-
               </InputWrapper>
               {errors.phone_number && <Error>{errors.phone_number.message}</Error>}
             </div>
-
-            <div>
-              <label htmlFor="password">Senha</label>
-              <InputWrapper>
-                <input
-                  type="password"
+            <TextInputPassword
+              label={'Senha'}
+              placeholder="Senha"
+              error={errors.password && errors.password.message}
+              {...register('password')}
             
-                  id="password"
-                  placeholder="Senha"
-                  {...register('password')}
-                />
-                <button type='button'>
-                  <Eye/>
-                </button>
+            />
 
-
-              </InputWrapper>
-              {errors.password && <Error>{errors.password.message}</Error>}
-
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword">Confirmar senha</label>
-              <InputWrapper>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  placeholder="Confirme sua senha"
-                  {...register('confirm_password')}
-                />
-                <button type='button'>
-                  <Eye /> 
-                </button>
-              </InputWrapper>
-              {errors.confirm_password && <Error>{errors.confirm_password.message}</Error>}
-
-            </div>
-
-
+            <TextInputPassword
+              label={'Confirmar senha'}
+              placeholder="Confirme sua Senha"
+              {...register('confirm_password')}
+              error={errors.password && errors.password.message}
+            />
+            
             <footer>
               <Buttons>
                 <Button 
@@ -290,3 +243,4 @@ export function Register() {
     </Wrapper>
   )
 }
+//293 lines

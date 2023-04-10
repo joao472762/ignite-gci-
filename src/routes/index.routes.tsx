@@ -8,9 +8,14 @@ import { PetProfile } from "../screens/PetProfile";
 import { useAuth } from "../hook/useAtuh";
 import { PetCreate } from "../screens/PetCreate";
 
+import React, { useCallback } from 'react'
+import { useDropzone } from 'react-dropzone'
+
 
 export function Router(){
     const {org } = useAuth()
+
+    
     return (
         <BrowserRouter>
           
@@ -18,7 +23,7 @@ export function Router(){
                     <Route path="/" Component={Home}/>
                     <Route path="map/:city" Component={Map}/>
                     <Route path='petProfile/:id' Component={PetProfile}/>
-                    {!org.id && (
+                    {org.id && (
                         <>
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />

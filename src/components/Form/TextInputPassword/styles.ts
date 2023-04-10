@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const InputPasswordContainer = styled.div`
-  label {
+export const InputPasswordContainer = styled.label`
+  & > span:nth-of-type(1) {
     font-size: 16px;
     font-weight: 600;
     color: #0d3b66;
