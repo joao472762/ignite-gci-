@@ -72,7 +72,7 @@ export const Form = styled.form`
   }
 
   input {
-    width: 100%;
+   width: 100%;
     font-size: 18px;
     font-weight: 600;
     color: #0d3b66;

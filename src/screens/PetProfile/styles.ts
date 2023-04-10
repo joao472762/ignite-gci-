@@ -6,7 +6,8 @@ export const PetProfileContainer = styled.div`
     margin: 0 auto;
 
     *:focus{
-            box-shadow: 0px 0px 0px 2px ${( {theme} ) => theme.colors.blue[400]};
+            
+        box-shadow: 0px 0px 0px 8px ${( {theme} ) => theme.colors.blue[400]};
 
     }
     

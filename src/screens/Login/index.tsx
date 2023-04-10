@@ -21,6 +21,7 @@ import {
   Button,
   Error,
 } from './styles'
+import { TextInput } from '../../components/Form/TextInput'
 
 
 
@@ -70,16 +71,18 @@ export function Login() {
         <FormWrapper>
           <h1>Boas-vindas!</h1>
           <Form onSubmit={handleSubmit(handleLogin)}>
-            <label htmlFor="email">Email</label>
-            <InputWrapper>
-              <input 
-                type="text" 
-                id="email" 
-                placeholder="Email" 
-                {...register('email')}
+           
+      
+              <TextInput
+                type="email"
+                id="email"
+                label='Email'
+                placeholder="Digite o seu Email"
+                error={errors.email && errors.email.message}
+                {...register('password')}
               />
-            </InputWrapper>
-            {errors.email && <Error>{errors.email.message}</Error>}
+           
+            
 
             <label htmlFor="password">Senha</label>
             <InputWrapper>

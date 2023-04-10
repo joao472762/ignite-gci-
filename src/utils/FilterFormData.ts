@@ -14,14 +14,22 @@ export const PetEnergy = {
 }
 
 
+
+
 export const PetIdependence  = {
-    low: 'Baixo',
+    low: 'Baixa',
     medium: 'médio',
     high: 'Alta',
 }
 
+export const PetIndependeceWithDescription = {
+    low: 'Baixa (precisa de companhia sempre)',
+    medium: 'médio (não precisa de muita companhia)',
+    high: 'Alta (não nescessita de companhia)',
+}
+
 export const PetSize = {
-    small: 'pequeno',
+    small: 'Pequeno',
     medium: 'mediano',
     big: 'grande',
 }

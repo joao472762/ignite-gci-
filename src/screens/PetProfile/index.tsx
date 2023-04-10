@@ -72,7 +72,7 @@ export function PetProfile(){
     })
     const { data: petAdoptionRequirements =[] } = useQuery<petAdoptionRequirement[]>(['petAdoptionRequiments', id], async () => {
         const response = await api.get(`/pets/adoption-requirements/${id}`)
-        console.log(response.data.adoption_requirements)
+        
         return response.data.adoption_requirements
 
     })

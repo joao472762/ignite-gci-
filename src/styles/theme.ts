@@ -14,11 +14,15 @@ export const theme  =  {
         },
         blue: {
             100: '#f3f5f7',
+            150: '#D3E2E5',
             200: '#8FA7B2',
+            300: '#114A80',
             400: '#0D3B66'
         },
         gray: {
-            100: '#FBE1E2'
+            100: '#FBE1E2',
+            200: '#F5F8FA'
+            
         },
         
         green: {
@@ -33,6 +37,7 @@ export const theme  =  {
         'xl': '1.25rem',
         '2xl' : '1.5rem',
         '3xl': '1.875rem',
+        '4xl': '2.5rem',
         '6xl': '3.375rem',
         '7xl' : '4rem'
         

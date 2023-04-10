@@ -4,17 +4,19 @@ import { Error, InputContainer, InputWrapper } from "./styles";
 interface FormInputProps extends InputHTMLAttributes<HTMLInputElement>{
     error?: string;
     label?: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 
 
-export function Input({ error, label,id,onChange, ...rest}: FormInputProps){
+export function TextInput({ error, label, ...rest}: FormInputProps){
     return (
         <InputContainer>
-           
+            {label   && (
+                <span>{label}</span>
+
+            )}
             <InputWrapper>
-                <input {...rest} onChange={onChange} />
+                <input {...rest}/>
             </InputWrapper>
             { error && <Error>
                 {error.toLocaleLowerCase() === 'required' ? 'Requerido' : error}

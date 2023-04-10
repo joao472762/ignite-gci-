@@ -90,7 +90,7 @@ export function Register() {
 
     }
     catch(error) {
-      console.log(error)
+    
       const isAppError = error instanceof AppError
       alert(isAppError? error.error : 'Algun Probelma ao cadastrar a a org , tente novamente mais tarde')
     }

@@ -7,6 +7,8 @@ export const GlobalTheme = createGlobalStyle`
         padding: 0;
         border: none;
         box-sizing: border-box;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
     }
     *:focus{
         outline:  none;

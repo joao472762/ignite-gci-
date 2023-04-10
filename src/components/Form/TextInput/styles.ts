@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export  const InputContainer = styled.div`
-  label {
+export  const InputContainer = styled.label`
+  span {
     font-size: 16px;
     font-weight: 600;
     color: #0d3b66;
@@ -17,17 +17,30 @@ export const InputWrapper = styled.div`
   border: 1px solid #d3e2e5;
   border-radius: 10px;
   padding: 18px;
-  margin-top: 15px;
+  margin-top: 8px;
+
+
+   
+
+  input {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d3b66;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
  
 
   button {
-    cursor: pointer
+    cursor: pointer;
     background-color: transparent ;
     display: flex;
     align-items: center;
     color: ${({ theme }) => theme.colors.blue[200]};
   }
-`;
+`
 
 
 export const Error = styled.span`

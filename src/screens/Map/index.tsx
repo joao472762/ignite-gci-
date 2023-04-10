@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {useParams,useLocation} from 'react-router-dom'
 
 
