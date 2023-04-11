@@ -11,7 +11,7 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const TextInputPassword = forwardRef<
     HTMLInputElement,
-    FormInputProps & ReturnType<UseFormRegister<{}>>
+    FormInputProps
 >(({ label, error, ...rest }, ref) => {
     const [isVisible, setIsVisible] = useState(false)
 

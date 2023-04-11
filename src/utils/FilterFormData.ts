@@ -40,3 +40,8 @@ export const petSelectType = {
     dog: 'Cachorros',
     cat: 'Gatos'
 }
+
+export const PetType = {
+    dog: 'Cachorro',
+    cat: 'Gato'
+}

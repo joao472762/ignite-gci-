@@ -9,7 +9,7 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement>{
 
 export const TextInput = forwardRef<
     HTMLInputElement,
-    FormInputProps & ReturnType<UseFormRegister<{}>>
+    FormInputProps
 >(({ label, error, ...rest }, ref) => (
     <InputContainer>
         {label && (

@@ -114,11 +114,6 @@ export function Map(){
         return response.data.pets
     })
 
-   
-
-    
-    
-
     
     async function handleFetchNewPets(formData: MapFormProps ){
         const {age,city,energy,independence,size} = formData

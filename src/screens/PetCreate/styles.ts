@@ -86,6 +86,22 @@ export const PetCreateForm = styled.form`
 
     }
 
+    & > button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color:    ${({theme}) => theme.colors.yellow[400]};
+         color:    ${({theme}) => theme.colors.blue[400]};
+            font-size:  ${({theme}) => theme.fontSize["lg"]};
+         font-weight: 900;
+         height: 4rem;
+         width: 100%;
+         border-radius: 20px;
+         margin-top: 8rem;
+         
+    }
+
 `
 
 export const PetTextFields = styled.div`
@@ -94,47 +110,127 @@ export const PetTextFields = styled.div`
     row-gap: 1.5rem;
     width: 100%;
 `
-
-export const UploadPhotos = styled.div`
-    width: 100%;
-    margin-top: 16px;
-
-    label {
-       
-    }
-`
-
-export const UploadPhotosBox = styled.label`
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-
-        justify-content: center;
-        width: 100%;
-
-        color: ${({theme:{colors}}) => colors.blue[400]};
-        background-color: red;
-        height: 200px;
-
-    
-
-
-        background-color: ${({theme:{colors}}) => colors.gray[200]};
-        border: 1px solid ${({theme:{colors}}) => colors.blue[150]} ;
-        border-radius: 10px;
-
-        & > span {
-            margin-top: 20px;
-            display: inline-block;
-        }
-        svg {
-            font-size: 25px;
-        }
-`
-
 export const PhotosPeview = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 8px;
     margin-top: 14px;
 `
+
+export const AdoptiontsRequirementsWrrapper = styled.div`
+    h2 {
+        font-size:  ${({theme}) => theme.fontSize["3xl"]};
+        color:    ${({theme}) => theme.colors.blue[400]};  
+        font-weight: 900;
+    }
+`
+
+export const AdoptiontsRequirements = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 1.75rem;
+    margin-top: 1.75rem;
+    border-top:  1px solid   ${({theme}) => theme.colors.blue[150]};
+`
+
+export const Requirement = styled.div`
+    label {
+        font-size: ${({theme}) => theme.fontSize.base};
+        color:${({theme: {colors}}) => colors.blue[400]};
+        font-weight: 600;
+
+    }
+    & > div {
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 10px;
+        border-color:${({theme: {colors}}) => colors.blue[150]};
+
+        width: 100%;
+        height: 4rem;
+
+        margin-top: 6px;
+        padding:  0 14px;
+
+        &:focus-within {
+            border-color:${({theme: {colors}}) => colors.blue[400]};
+        }
+
+        input {
+            flex: 1;
+            color:${({theme: {colors}}) => colors.blue[300]};
+            font-size: ${({theme}) => theme.fontSize.lg};
+            height: 90%;
+            font-weight: 600;
+       
+    
+            
+            &::placeholder {
+                color:${({theme: {colors}}) => colors.blue[300]};
+            }
+        }
+
+
+    }
+
+
+`
+
+export const RemoveRequirimentButton = styled.button`
+    line-height: 0;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    font-size: 20px;
+    border-color:${({theme: {colors}}) => colors.red[500]};
+    color:${({theme: {colors}}) => colors.red[500]};
+
+      &:not(:disabled):hover {
+        opacity: .8;
+        cursor: pointer;
+    }
+    
+
+`
+
+export const RequirimentError = styled.span`
+  display: block;
+  font-weight: bold;
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  color: ${({ theme }) => theme.colors.red[500] };
+  margin-top: 4px;
+
+`;
+
+export const AddNewRequireimentButton = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    border: 1px dashed ${({theme: {colors}}) => colors.red[500]};
+    border-radius: 10px;
+    height: 4rem;
+    margin-top: 12px;
+    
+    &:not(:disabled):hover {
+        opacity: .8;
+        cursor: pointer;
+    }
+
+    svg {
+       color :  ${({theme: {colors}}) => colors.red[500]};
+       font-size: 20px;
+    }
+
+
+`
+
+

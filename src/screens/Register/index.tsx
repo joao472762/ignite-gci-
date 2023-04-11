@@ -3,7 +3,6 @@ import { IMaskInput } from 'react-imask'
 import { Link } from 'react-router-dom'
 import {  TileLayer } from 'react-leaflet'
 import { useEffect, useState } from 'react'
-import {Eye, EyeSlash} from '@phosphor-icons/react'
 import { useForm, Controller} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -169,7 +168,7 @@ export function Register() {
             <TextInput
               {...register('address')}
               placeholder="Rua do Meio, 1825"
-              lable='Endereço'
+              label='Endereço'
               error={errors.address && errors.address.message}
             />
 

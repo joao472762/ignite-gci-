@@ -3,13 +3,11 @@ import {  Route, BrowserRouter, Routes,  } from "react-router-dom";
  import { Map } from "../screens/Map";
 import { Home } from "../screens/Home";
 import { Login } from "../screens/Login";
-import { Register } from "../screens/Register";
 import { PetProfile } from "../screens/PetProfile";
 import { useAuth } from "../hook/useAtuh";
 import { PetCreate } from "../screens/PetCreate";
 
-import React, { useCallback } from 'react'
-import { useDropzone } from 'react-dropzone'
+import { Register } from "../screens/Register";
 
 
 export function Router(){

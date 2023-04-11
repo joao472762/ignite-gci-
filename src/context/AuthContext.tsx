@@ -1,8 +1,9 @@
 import { ReactNode, createContext,useEffect,useState } from "react";
 import { ORG_DTO } from "../DTOS/orgDTO";
 import { api } from "../libs/axios";
-import { getOrgInLocalStorage, saveOrgInLocalStorage } from "../Storage/org";
-import { getAuthTokenInLocalStorage, saveAuthTokenInLocalStorage } from "../Storage/authToken";
+import { getOrgInLocalStorage, removeOrgInLocalStorage, saveOrgInLocalStorage } from "../Storage/org";
+import { getAuthTokenInLocalStorage, removeAuthTokenInLocalStorage, saveAuthTokenInLocalStorage } from "../Storage/authToken";
+import { useNavigate } from "react-router-dom";
 
 interface  AuthContextType {
     org: ORG_DTO,
@@ -25,6 +26,7 @@ interface SignResponseProps {
 export function AuthContextProvider({ children}: AuthContextProviderProps){
     const [org, setOrg] = useState<ORG_DTO>({} as ORG_DTO)
 
+
     function saveOrgAndTokenInLocalStorage(org: ORG_DTO, token: string){
         saveOrgInLocalStorage(org)
         saveAuthTokenInLocalStorage(token)
@@ -34,6 +36,15 @@ export function AuthContextProvider({ children}: AuthContextProviderProps){
         setOrg(org)
         api.defaults.headers.common.Authorization = `Bearer ${token}`
     }
+    function removeOrtAndToken(){
+        removeOrgInLocalStorage()
+        removeAuthTokenInLocalStorage()
+        
+    }
+
+    async function singOut() {
+        removeOrtAndToken()
+    }
 
     async function sign(email: string, password: string){
         try {
@@ -41,7 +52,7 @@ export function AuthContextProvider({ children}: AuthContextProviderProps){
                 email,
                 password
             })
-            
+            console.log(response.data)
             const { org, token}  = response.data
 
             if(!token || !org) return ;

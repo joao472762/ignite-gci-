@@ -105,7 +105,7 @@ export const InputWrapper = styled.div`
  
 
   button {
-    cursor: pointer
+    cursor: pointer;
     background-color: transparent ;
     display: flex;
     align-items: center;

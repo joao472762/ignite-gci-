@@ -27,7 +27,7 @@ import { TextInputPassword } from '../../components/Form/TextInputPassword'
 
 
 const LoginFormSchema = z.object({
-  email: z.string().email('Digite um email válido'),
+  email: z.string().email('Digite um email válido').toLowerCase(),
   password: z.string().min(1,'Digte a senha')
 })
 
