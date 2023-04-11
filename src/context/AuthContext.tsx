@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 interface  AuthContextType {
     org: ORG_DTO,
     sign: (email: string, password: string) => Promise<void>
+    singOut: () => void
 }
 
 export const AuthContext =  createContext({} as AuthContextType)
@@ -39,6 +40,7 @@ export function AuthContextProvider({ children}: AuthContextProviderProps){
     function removeOrtAndToken(){
         removeOrgInLocalStorage()
         removeAuthTokenInLocalStorage()
+        setOrg({} as ORG_DTO)
         
     }
 
@@ -81,7 +83,8 @@ export function AuthContextProvider({ children}: AuthContextProviderProps){
     return  (
        <AuthContext.Provider value={{
             org, 
-            sign
+            sign,
+            singOut
        }}>
             {children}
        </AuthContext.Provider>

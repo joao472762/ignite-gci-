@@ -21,7 +21,7 @@ export function Router(){
                     <Route path="/" Component={Home}/>
                     <Route path="map/:city" Component={Map}/>
                     <Route path='petProfile/:id' Component={PetProfile}/>
-                    {org.id && (
+                    {!org.id && (
                         <>
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />

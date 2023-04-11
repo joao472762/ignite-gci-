@@ -45,6 +45,7 @@ export function Login() {
     try {
       const {email,password} = formData
       await sign(email, password)
+      navigate('/petCreate')
     
     } catch (error) {
       const isAppError = error instanceof AppError
@@ -56,9 +57,7 @@ export function Login() {
 
 
 
-  function handleNavigateToRegisterScreen(){
-    navigate('/register')
-  }
+
 
   return (
     <Wrapper>
@@ -96,8 +95,8 @@ export function Login() {
               </Button>
               <Button 
                 role='navigation' 
+                disabled={isSubmitting}
                 type="button" 
-                onClick={handleNavigateToRegisterScreen} 
                 className="secondary"
               >
                 Cadastrar minha organização

@@ -1,6 +1,6 @@
 import * as z from 'zod'
 import { IMaskInput } from 'react-imask'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {  TileLayer } from 'react-leaflet'
 import { useEffect, useState } from 'react'
 import { useForm, Controller} from 'react-hook-form'
@@ -64,6 +64,8 @@ type RegisterFormSchemaData = z.infer<typeof RegisterFormSchema>
 
 export function Register() {
   const {sign}  = useAuth()
+  const navigate = useNavigate()
+
 
   const { formState, control, register, handleSubmit,watch, setValue} = useForm<RegisterFormSchemaData>({
     resolver: zodResolver(RegisterFormSchema)
@@ -74,7 +76,6 @@ export function Register() {
 
 
   async function handleRegisterOrganization(formData: RegisterFormSchemaData) {
-    
     try {
       await api.post('/orgs',{
         name: formData.name,
@@ -88,6 +89,8 @@ export function Register() {
       })
 
       await sign(formData.email, formData.password)
+
+      navigate('/petCreate')
 
     }
     catch(error) {

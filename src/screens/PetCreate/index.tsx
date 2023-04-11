@@ -33,6 +33,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { SelectControlled } from './components/Form/SelectControlled'
 import { api } from '../../libs/axios'
 import { useAuth } from '../../hook/useAtuh'
+import { useNavigate } from 'react-router-dom'
 
 const CreatePetFormSchema =  z.object({
     name: z.string().nonempty('Digite o Nome Do pet.'),
@@ -55,7 +56,8 @@ export type CreatePetFormArrayTypes = 'energy' | 'age' | 'independence' | 'size'
 
 export function PetCreate(){
     const [files,setFiles] = useState<File[]>([])
-    const {org} = useAuth()
+    const {org, singOut} = useAuth()
+      const navigate = useNavigate()
 
     const { handleSubmit,register , control, formState, watch,  getFieldState} = useForm<CreatePetFormSchemaData>({
         resolver: zodResolver(CreatePetFormSchema),
@@ -92,7 +94,10 @@ export function PetCreate(){
     function handleRemoveRequirement(requirimentIndex: number){
         remove(requirimentIndex)
     }
-
+    function handleSignOut(){
+        singOut()
+        navigate('/login')
+    }
     async function handleCreateNewPet(createPetForm: CreatePetFormSchemaData ) {
         try {
             const formData = new FormData()
@@ -137,7 +142,7 @@ export function PetCreate(){
                     <h1>Seu Cãopanheiro</h1>
                     <p>{org.address}</p>
                 </PetLocation>
-                <SignOutButton>
+                <SignOutButton onClick={handleSignOut}>
                     <SignOut weight='bold'/>
                 </SignOutButton>
             </PetCreateHeader>
